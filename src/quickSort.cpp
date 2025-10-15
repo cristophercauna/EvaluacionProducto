@@ -1,4 +1,4 @@
-#include "../include/heapsort.h"
+#include "../include/quickSort.h"
 #include<vector>
 #include<algorithm>
 using namespace std;
