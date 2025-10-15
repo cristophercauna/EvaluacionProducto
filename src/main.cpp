@@ -1,4 +1,5 @@
 #include "../include/heapsort.h"
+#include "../include/quickSort.h"
 #include <chrono>
 #include <iostream>
 #include <random>
