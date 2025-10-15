@@ -3,6 +3,9 @@
 #include<algorithm>
 using namespace std;
 
+extern long long comparaciones_qs;
+extern long long intercambios_qs;
+
 void Reduce(vector<long long>& arr, long long inicio ,long long final){
     long long izq = inicio;
     long long der = final;
@@ -10,23 +13,38 @@ void Reduce(vector<long long>& arr, long long inicio ,long long final){
     int cen = 1;
     while(cen == 1){
         cen = 0;
-        while(arr[pos]<= arr[der] && pos != der){
-            der--;
+        while (pos != der) {
+            comparaciones_qs++;
+            if (arr[pos] <= arr[der]) {
+                der--;
+            }
+            else {
+                break;
+            }
         }
         if ( pos != der){
             long long aux = arr[pos];
             arr[pos] = arr[der];
             arr[der]= aux;
+            intercambios_qs++;
             pos = der;
-                while(arr[pos] >= arr[izq] && pos != izq){
+
+                while (pos != izq) {
+                comparaciones_qs++;
+                if (arr[pos] >= arr[izq]) {
                     izq++;
                 }
-                if(pos != izq){
-                    aux = arr[pos];
-                    arr[pos]=arr[izq];
-                    arr[izq]= aux;
-                    pos = izq;
-                    cen = 1;
+                else {
+                    break;
+                }
+            }
+            if(pos != izq){
+                aux = arr[pos];
+                arr[pos]=arr[izq];
+                arr[izq]= aux;
+                intercambios_qs++;
+                pos = izq;
+                cen = 1;
             } 
         }
        if(pos - 1 > inicio)
