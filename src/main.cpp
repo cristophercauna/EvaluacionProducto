@@ -15,7 +15,7 @@ long long intercambios_hs = 0;
 int main(){
     unsigned seed = chrono::steady_clock::now().time_since_epoch().count();
     mt19937 rng(seed);
-    uniform_int_distribution<int> dist(0, 1000);
+    uniform_int_distribution<int> dist(0, 1000000);
 
     long long n;
     cin >> n;
@@ -60,5 +60,8 @@ int main(){
 
     cout << "Comparaciones (HeapSort): " << comparaciones_hs << endl;
     cout << "Intercambios (HeapSort): "  << intercambios_hs  << endl;
+
+    cout << endl << "SEMILLA UTILIZADA: ";
+    cout << seed << endl;
     return 0;
 }
