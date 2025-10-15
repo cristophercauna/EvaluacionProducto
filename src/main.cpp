@@ -5,6 +5,12 @@
 #include <vector>
 using namespace std;
 
+long long comparaciones_qs = 0;
+long long intercambios_qs = 0;
+
+long long comparaciones_hs = 0;
+long long intercambios_hs = 0;
+
 int main(){
     unsigned seed = chrono::steady_clock::now().time_since_epoch().count();
     mt19937 rng(seed);
@@ -33,6 +39,9 @@ int main(){
 
     cout << "Time difference = ";
     cout << chrono::duration_cast<chrono::nanoseconds>(end_qs - begin_qs).count() << "[ns]" << endl;
+    cout << "Comparaciones (QuickSort): " << comparaciones_qs << endl;
+    cout << "Intercambios (QuickSort): "  << intercambios_qs  << endl;
+
 
     chrono::steady_clock::time_point begin_hs = chrono::steady_clock::now();
     heapSort(Ai, n);
@@ -48,5 +57,7 @@ int main(){
     cout << "Time difference = ";
     cout << chrono::duration_cast<chrono::nanoseconds>(end_hs - begin_hs).count() << "[ns]" << endl;
 
+    cout << "Comparaciones (HeapSort): " << comparaciones_hs << endl;
+    cout << "Intercambios (HeapSort): "  << intercambios_hs  << endl;
     return 0;
 }
